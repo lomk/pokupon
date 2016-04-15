@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="ua.com.bukvashops.pocupon.Entities.Shop" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.

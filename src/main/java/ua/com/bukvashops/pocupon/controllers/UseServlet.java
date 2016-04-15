@@ -40,12 +40,24 @@ public class UseServlet extends HttpServlet {
                 request.setAttribute("message", message);
                 getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
             } catch (SQLException e) {
+                String message = "Ошибка применения сертификата";
+                request.setAttribute("message", message);
+                getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
                 e.printStackTrace();
             } catch (NoDataDaoException e) {
+                String message = "Ошибка применения сертификата";
+                request.setAttribute("message", message);
+                getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
+                String message = "Ошибка применения сертификата";
+                request.setAttribute("message", message);
+                getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
                 e.printStackTrace();
             } catch (NamingException e) {
+                String message = "Ошибка применения сертификата";
+                request.setAttribute("message", message);
+                getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
                 e.printStackTrace();
             } finally {
                 if (certificateDao != null) {

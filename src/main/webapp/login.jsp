@@ -9,12 +9,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Login</title>
 </head>
 
-<c:if test="${!empty requestScope.message}">
+<%--<c:if test="${!empty requestScope.message}">
     <h3 style="text-align:center;"><c:out value="${requestScope.message}"/></h3>
-</c:if>
+</c:if>--%>
+<%@ include file="basepages/checkerror.jsp" %>
 <form action="login" method="post" style="text-align:center;">
     <strong>Логин :   </strong><input type="text" name="login"><br>
     <br>
