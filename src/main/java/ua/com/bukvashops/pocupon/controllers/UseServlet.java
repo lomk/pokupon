@@ -26,10 +26,11 @@ public class UseServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Certificate certificate = (Certificate) request.getSession().getAttribute("certificate");
-        String code = certificate.getCode();
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
         MySqlCertificateDao certificateDao = null;
+        String code = certificate.getCode();
+        String error = "Сертификат применен.";
+
         if (certificate != null && code != null ){
             try {
                 certificate.setActive(false);
@@ -40,23 +41,19 @@ public class UseServlet extends HttpServlet {
                 request.setAttribute("message", message);
                 getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
             } catch (SQLException e) {
-                String message = "Ошибка применения сертификата";
-                request.setAttribute("message", message);
+                request.setAttribute("message", error);
                 getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
                 e.printStackTrace();
             } catch (NoDataDaoException e) {
-                String message = "Ошибка применения сертификата";
-                request.setAttribute("message", message);
+                request.setAttribute("message", error);
                 getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
-                String message = "Ошибка применения сертификата";
-                request.setAttribute("message", message);
+                request.setAttribute("message", error);
                 getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
                 e.printStackTrace();
             } catch (NamingException e) {
-                String message = "Ошибка применения сертификата";
-                request.setAttribute("message", message);
+                request.setAttribute("message", error);
                 getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);
                 e.printStackTrace();
             } finally {
@@ -64,7 +61,6 @@ public class UseServlet extends HttpServlet {
                     certificateDao.closeConnection();
                 }
             }
-
         }
     }
 }
